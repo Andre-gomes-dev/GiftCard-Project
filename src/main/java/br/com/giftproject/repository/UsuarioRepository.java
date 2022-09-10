@@ -1,6 +1,6 @@
 package br.com.giftproject.repository;
 
-import br.com.giftproject.model.Usuario;
+import br.com.giftproject.model.security.Usuario;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

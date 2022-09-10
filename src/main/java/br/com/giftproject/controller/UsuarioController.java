@@ -1,6 +1,6 @@
 package br.com.giftproject.controller;
 
-import br.com.giftproject.model.Usuario;
+import br.com.giftproject.model.security.Usuario;
 import br.com.giftproject.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
