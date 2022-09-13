@@ -1,6 +1,6 @@
 package br.com.giftproject.model.security;
 
-import br.com.giftproject.model.CarrinhoGift;
+import br.com.giftproject.model.CarrinhoCompras;
 
 import javax.persistence.*;
 
@@ -16,7 +16,7 @@ public class Usuario {
     private DadosLogin dadosLogin;
 
     @OneToOne
-    private CarrinhoGift carrinhoGift;
+    private CarrinhoCompras carrinhoGift;
 
 
     public Usuario() {
