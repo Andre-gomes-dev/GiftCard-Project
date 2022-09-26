@@ -4,10 +4,7 @@ import br.com.giftproject.model.security.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class CarrinhoCompras {
@@ -16,20 +13,27 @@ public class CarrinhoCompras {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int valorGift;
+
     @Autowired
     @OneToOne
     private Usuario usuario;
 
+
+    private Integer quantidade;
+
+    private Double valorGift;
+
+    private TipoGift tipoGift;
+
     public CarrinhoCompras() {
     }
 
-    public CarrinhoCompras(int valorGift, TipoGift tipoGift) {
-        this.valorGift = valorGift;
+    public CarrinhoCompras(Integer quantidade, Double valor, TipoGift tipoGift) {
+        this.quantidade = quantidade;
+        this.valorGift = valor;
         this.tipoGift = tipoGift;
     }
 
-    private TipoGift tipoGift;
     //user
     public Usuario getUsuario() {
         return usuario;
@@ -44,9 +48,36 @@ public class CarrinhoCompras {
     }
 
 
-    public CarrinhoCompras inserirValor(TipoGift tipoGift){
-        List<CarrinhoCompras> listaDeCompras = new ArrayList<>();
-        listaDeCompras.forEach((val) -> listaDeCompras.addAll());
-        return new CarrinhoCompras()
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Double getValorGift() {
+        return valorGift;
+    }
+
+    public void setValorGift(Double valor) {
+        this.valorGift = valor;
+    }
+
+//    public CarrinhoCompras inserirValor(){
+//        Set<CarrinhoCompras> listaDeCompras = new HashSet<>();
+//        for (CarrinhoCompras val : listaDeCompras) {
+//            val += getValorGift();
+//        }
+//
+//        return new CarrinhoCompras()
+//   }
+
+    public Double multiplicarTotal(){
+        return getQuantidade() * getValorGift();
     }
 }

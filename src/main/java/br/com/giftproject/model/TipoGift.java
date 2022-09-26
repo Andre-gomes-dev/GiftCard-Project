@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.beans.JavaBean;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public enum TipoGift  {
