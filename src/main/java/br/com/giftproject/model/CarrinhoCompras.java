@@ -1,10 +1,6 @@
 package br.com.giftproject.model;
 
-import br.com.giftproject.model.security.Usuario;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
-import java.util.*;
 
 @Entity
 public class CarrinhoCompras {
@@ -13,17 +9,19 @@ public class CarrinhoCompras {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @Autowired
-    @OneToOne
-    private Usuario usuario;
-
+//
+//    @Autowired
+//    @OneToOne
+//    private Usuario usuario;
 
     private Integer quantidade;
 
-    private Double valorGift;
-
+    @Enumerated(value = EnumType.STRING)
     private TipoGift tipoGift;
+
+    private Double valorGift;
+    private double totaldaCompra;
+
 
     public CarrinhoCompras() {
     }
@@ -34,22 +32,13 @@ public class CarrinhoCompras {
         this.tipoGift = tipoGift;
     }
 
-    //user
-    public Usuario getUsuario() {
-        return usuario;
-    }
-    //atributos da classe
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public Integer getQuantidade() {
@@ -60,24 +49,27 @@ public class CarrinhoCompras {
         this.quantidade = quantidade;
     }
 
+    public TipoGift getTipoGift() {
+        return tipoGift;
+    }
+
+    public void setTipoGift(TipoGift tipoGift) {
+        this.tipoGift = tipoGift;
+    }
+
     public Double getValorGift() {
         return valorGift;
     }
 
-    public void setValorGift(Double valor) {
-        this.valorGift = valor;
+    public double getTotaldaCompra() {
+        return totaldaCompra;
     }
 
-//    public CarrinhoCompras inserirValor(){
-//        Set<CarrinhoCompras> listaDeCompras = new HashSet<>();
-//        for (CarrinhoCompras val : listaDeCompras) {
-//            val += getValorGift();
-//        }
-//
-//        return new CarrinhoCompras()
-//   }
+    public void setTotaldaCompra(double totaldaCompra) {
+        this.totaldaCompra = totaldaCompra;
+    }
 
-    public Double multiplicarTotal(){
-        return getQuantidade() * getValorGift();
+    public void multiplicarTotal(){
+        totaldaCompra = getQuantidade() * getValorGift();
     }
 }

@@ -24,16 +24,17 @@ public class CarrinhoComprasController {
             return new ArrayList<>(Arrays.asList(TipoGift.values()));
         }
 
-    @PostMapping()
+    @PostMapping("/criacarrinho")
     public ResponseEntity<CarrinhoCompras> criandoCarrinho(@RequestParam(required = false ) boolean finalizarTransacao, 
                                                            @RequestBody CarrinhoCompras carrinhoCompras , UriComponentsBuilder uriComponentsBuilder){
             
             List<CarrinhoCompras> colecao = new ArrayList<>();
-            colecao.forEach(x -> {
-                carrinhoCompras.multiplicarTotal();
-            });
+//            colecao.forEach(x -> {
+//                carrinhoCompras.multiplicarTotal();
+//            });
+            carrinhoCompras.multiplicarTotal();
             carrinhoRepository.save(carrinhoCompras);
-           URI uri = uriComponentsBuilder.path("/carrinhocompra/criacarrinho/{id}").buildAndExpand(carrinhoCompras.getId()).toUri();
+           URI uri = uriComponentsBuilder.path("/carrinhocompra/criacarrinho").buildAndExpand(carrinhoCompras.getId()).toUri();
         return  ResponseEntity.created(uri).body(carrinhoCompras);
     }
 
