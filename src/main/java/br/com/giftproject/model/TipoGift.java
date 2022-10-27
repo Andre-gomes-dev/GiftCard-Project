@@ -1,23 +1,6 @@
 package br.com.giftproject.model;
 
-import org.springframework.context.annotation.Bean;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.beans.JavaBean;
-import java.util.ArrayList;
-import java.util.List;
-
-
 public enum TipoGift  {
-
-
-//    private String valorDoGift;
-//
-//    TipoGift(String valorDoGift) {
-//        this.valorDoGift = valorDoGift;
-//    }
-
 
 
     AMAZON,
@@ -25,7 +8,7 @@ public enum TipoGift  {
     NETFLIX,
     XBOX,
     PLAYSTATION,
-    GIFT_PRESENT;
+    GIFT_PRESENT
 
     //
 //    GOOGLE_PLAY(30, 50, 100),
