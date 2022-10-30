@@ -3,6 +3,7 @@ package br.com.giftproject.service;
 import br.com.giftproject.model.Produto;
 import br.com.giftproject.model.TipoGift;
 import br.com.giftproject.repository.ProdutoRepository;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,14 @@ public class ProdutoService {
         produtoRepository.save(produto);
     }
 
+    public ResponseEntity<Produto> deletarId(Long id){
+      Optional<Produto> byid = produtoRepository.findById(id);
+      if(byid.isPresent()){
+          produtoRepository.deleteById(id);
+          return ResponseEntity.ok().build();
+      }
+        return ResponseEntity.notFound().build();
+    }
 
    public ResponseEntity<Produto> buscarId(Long id){
        Optional<Produto> byId = produtoRepository.findById(id);

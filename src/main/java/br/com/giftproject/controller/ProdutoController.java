@@ -45,8 +45,8 @@ public class ProdutoController {
 //    }
 //
     @DeleteMapping("/{id}")
-    public void deletarEstoque(@PathVariable Long id){
-
+    public ResponseEntity<Produto> deletarEstoque(@PathVariable Long id){
+       return service.deletarId(id);
     }
 
 }
